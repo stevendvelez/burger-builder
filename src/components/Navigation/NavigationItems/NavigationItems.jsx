@@ -8,8 +8,10 @@ const NavigationItems = (props) => {
     return (
         <ul className={classes.NavigationItems}>
             <NavigationItem onClick={props.onClick} link="/">BurgerBuilder</NavigationItem>
-            <NavigationItem onClick={props.onClick} link="/orders">Orders</NavigationItem>
-            <NavigationItem onClick={props.onClick} link="/auth">Authenticate</NavigationItem>
+            {props.isAuthenticated && <NavigationItem onClick={props.onClick} link="/orders">Orders</NavigationItem>}
+            {props.isAuthenticated 
+                ? <NavigationItem onClick={props.onClick} link="/logout">Logout</NavigationItem>
+                : <NavigationItem onClick={props.onClick} link="/auth">Authenticate</NavigationItem>}
         </ul>
     );
 }
